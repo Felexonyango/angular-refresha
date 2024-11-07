@@ -1,0 +1,10 @@
+
+<div *ngIf="todo">
+    <h3>Todo Details</h3>
+    <p><strong>Title:</strong> {{ todo.title }}</p>
+    <p><strong>Description:</strong> {{ todo.description }}</p>
+  </div>
+  <div *ngIf="!todo">
+    <p>Select a todo to see the details</p>
+  </div>
+  

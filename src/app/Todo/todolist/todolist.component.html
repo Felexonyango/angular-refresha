@@ -1,0 +1,8 @@
+<h2>Todo List</h2>
+<ul>
+  <li *ngFor="let todo of todos" (click)="selectTodo(todo)">
+    {{ todo?.title }}
+  </li>
+</ul>
+<!-- parent update child using @Input -->
+<app-tododetail [todo]="selectedTodo"></app-tododetail>
