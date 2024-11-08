@@ -1,0 +1,54 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  
+  
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput id="firstName" type="text" formControlName="firstName" />
+      <mat-error *ngIf="form.get('firstName')?.hasError('required')">First Name is required.</mat-error>
+      <mat-error *ngIf="form.get('firstName')?.hasError('minlength')">Minimum 3 characters required.</mat-error>
+    </mat-form-field>
+  
+
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput id="lastName" type="text" formControlName="lastName" />
+      <mat-error *ngIf="form.get('lastName')?.hasError('required')">Last Name is required.</mat-error>
+      <mat-error *ngIf="form.get('lastName')?.hasError('minlength')">Minimum 3 characters required.</mat-error>
+    </mat-form-field>
+  
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput id="email" type="email" formControlName="email" />
+      <mat-error *ngIf="form.get('email')?.hasError('required')">Email is required.</mat-error>
+      <mat-error *ngIf="form.get('email')?.hasError('email')">Enter a valid email address.</mat-error>
+    </mat-form-field>
+  
+    
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput id="password" type="password" formControlName="password" />
+      <mat-error *ngIf="form.get('password')?.hasError('required')">Password is required.</mat-error>
+      <mat-error *ngIf="form.get('password')?.hasError('minlength')">Minimum 8 characters required.</mat-error>
+    </mat-form-field>
+  
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Confirm Password</mat-label>
+      <input matInput id="confirmPassword" type="password" formControlName="confirmPassword" />
+      <mat-error *ngIf="form.get('confirmPassword')?.hasError('required')">Confirm Password is required.</mat-error>
+    </mat-form-field>
+  
+    
+    <mat-checkbox formControlName="termsAndConditions">
+      I agree to the Terms and Conditions
+    </mat-checkbox>
+    <mat-error *ngIf="form.get('termsAndConditions')?.invalid">
+      You must agree to the terms.
+    </mat-error>
+  
+   
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
+  
+  </form>
+  
