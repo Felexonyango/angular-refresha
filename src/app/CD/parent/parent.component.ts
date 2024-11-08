@@ -14,11 +14,11 @@ export class ParentComponent {
 
   modifyArray() {
     
-    this.items.push(4); // This will NOT trigger change detection in the child
+    this.items.push(4); 
   }
 
   replaceArray() {
 
-    this.items = [...this.items, 4]; // This WILL trigger change detection in the child
+    this.items = [...this.items, 4];
   }
 }

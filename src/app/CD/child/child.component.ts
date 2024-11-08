@@ -11,6 +11,7 @@ import { ChangeDetectionStrategy, Component, Input, SimpleChanges } from '@angul
 export class ChildComponent {
   @Input() items!: number[];
 
+  
   // Since @Input changes , ChangeDetectionStrategy onpush will work
   ngOnChanges(changes: SimpleChanges) {
     console.log('Change detected in child component', changes);
