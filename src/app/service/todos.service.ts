@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 import { ITodo } from '../interface/TodoInterface';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TodosService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   todos: ITodo[] = [
     {
@@ -39,5 +40,12 @@ export class TodosService {
 
   getTodos(): Observable<any> {
     return of(this.todos);
+  }
+
+  getAllTodos(): Observable<any> {
+    return this.http.get<ITodo[]>('https://jsonplaceholder.typicode.com/todos');
+  }
+  getTodosById(id: number): Observable<any> {
+    return this.http.get<ITodo>(`https://jsonplaceholder.typicode.com/todos/${id}`);
   }
 }
