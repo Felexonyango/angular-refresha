@@ -9,7 +9,7 @@ import {
   switchMap,
   takeUntil,
 } from 'rxjs';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedService } from '../service/shared.service';
 
 import { CommonModule } from '@angular/common';
@@ -28,12 +28,25 @@ export class SearchFormComponent implements OnInit {
 
   inputText = new FormControl('');
   // private destroy$ = new Subject<void>();
-  constructor(private sharedService: SharedService) {}
+  constructor(
+    private sharedService: SharedService,
+    private fb: FormBuilder
+  
+  ) {}
 
+  profileForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+  });
+  
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
   }
   ngOnInit() {
+
+    
+
+    //subscriptions
     this.subscriptions.add(
       this.inputText.valueChanges
         .pipe(
@@ -49,6 +62,7 @@ export class SearchFormComponent implements OnInit {
         })
     );
   }
+
 
   getCountries(query: string) {
     this.subscriptions.add(
@@ -80,4 +94,6 @@ export class SearchFormComponent implements OnInit {
   //   this.destroy$.next();
   //   this.destroy$.complete();
   // }
+
+  
 }
