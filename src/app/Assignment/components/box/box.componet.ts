@@ -18,9 +18,12 @@ import { SelectionService } from '../../service/selection.service';
       <span>{{ selection || 'Select Element' }}</span>
       
       
-      <div *ngIf="optionValue$ | async as optionValue" style="position: absolute; bottom: 5px; width: 100%; text-align: center;">
-        <span *ngIf="optionValue !== null">{{ optionValue }}</span>
-      </div>
+      @if(optionValue$ | async; as optionValue){
+         <div style="position: absolute; bottom: 5px; width: 100%; text-align: center;">
+         <span *ngIf="optionValue !== null">{{ optionValue }}</span>
+
+       </div>
+       }
     </div>
     
   `,
@@ -41,11 +44,16 @@ export class BoxComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initializeComponent();
+  }
+
+  initializeComponent() {
     this.optionValue$ = this.selectionService.getOptionValue(this.index);
-  
+
     this.selectionService.getSelection(this.index).subscribe((selection) => {
       this.selection = selection;
     });
+
     this.selectionService.getActiveBoxIndex().subscribe((activeIndex) => {
       this.isActive = this.index === activeIndex;
     });

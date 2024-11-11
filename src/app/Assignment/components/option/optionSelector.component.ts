@@ -8,15 +8,19 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   template: `
     <div>
-      <button
-        *ngFor="let option of options"
-        (click)="selectOption(option)"
-        [ngStyle]="{
-          backgroundColor: isSelected(option) ? '#e6f7ff' : 'transparent'
-        }"
-      >
-        {{ option }}
-      </button>
+    <div>
+  @for ( option of options;track  option) {
+    <button
+      (click)="selectOption(option)"
+      [ngStyle]="{
+        backgroundColor: isSelected(option) ? '#e6f7ff' : 'transparent'
+      }"
+    >
+      {{ option }}
+    </button>
+  }
+</div>
+
     </div>
 
   `,
